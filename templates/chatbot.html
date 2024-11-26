@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chat Website</title>
+        <link rel="icon" 
+        type="image/png" 
+        href="https://cdn.discordapp.com/attachments/959644048841375787/1128258611605413959/Modern_Square_Typographic_Fashion_Brand_Logo.png">
+        <style>
+            .logo{
+                width :190px;
+            }
+
+            body {
+                font-family: Colfax,colfax-web,Proxima Nova,Open Sans,Gill Sans MT,Gill Sans,Corbel,Arial,sans-serif;
+                margin: 0;
+                padding: 0;
+                background-image: url('https://cdn.discordapp.com/attachments/959644048841375787/1128589883003387964/rm373-503.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position : center;
+                position : relative;
+
+            }
+            
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background-color: rgba(255, 255, 255, 0);
+                
+                
+            }
+            
+            .chat_box_frame {
+                width: 800px;
+                height: 600px;
+                position: fixed;
+                top: 60%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                position:absolute;
+                
+            }
+            
+            .chat_box {
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0);
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .chat_body {
+                flex-grow: 1;
+                padding: 10px;
+                overflow-y: auto;
+            }
+            
+            .chat_message {
+                margin-bottom: 10px;
+            }
+            
+            .sender {
+                font-weight: bold;
+                margin-bottom: 5px;
+                color:white;
+                font-size: 20px;
+            }
+            
+            .usermessage {
+                background-color: black;
+                padding: 8px;
+                border-radius: 5px;
+                display: inline-block;
+                color:white;
+                font-size: 20px;
+            }
+            .botmessage{
+                background-color:#00BFFF;
+                padding: 8px;
+                border-radius: 5px;
+                display: inline-block;
+                color:white;
+                font-size: 20px;
+            }
+            .chat_input {
+                max-width:700px;
+                padding: 10px;
+                display:flex;
+            }
+            
+            .chat_input input[type="text"] {
+                width: 100%;
+                padding: 5px;
+                border: none;
+                border-radius: 3px;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+                box-sizing: border-box; 
+            }
+            .noidungdongdau{
+                color: white;
+                position: absolute;
+                top:5%;
+                left: 35%;
+                font-size: 50px;
+                font-weight:900;
+            }
+            .noidungdonghai{
+                color: white;
+                position:absolute;
+                top:11%;
+                left:33%;
+                font-size: 50px;
+                font-weight:900;
+            }
+            .noidungphumot{
+                color: white;
+                position:absolute;
+                top:20%;
+                left:30%;
+                font-size: 25px;
+            }
+            .noidungphuhai{
+                color: white;
+                position:absolute;
+                top:25%;
+                left:29%;
+                font-size: 25px;
+            }
+
+            .chat_input button {
+                margin: 0px;
+                padding: 7px 10px;
+                border: none;
+                border-radius: 3px;
+                background-color: lightblue;
+                color: #fff;
+                cursor: pointer;
+                font-size: 15px;
+            }
+            input,input::placeholder {
+                font: 20px;
+            }
+            .chat_input button:hover {
+                background-color: darkblue;
+            }
+            /* .order{
+                text-align:center;
+            } */
+            .fadein{
+                    animation: fadeIn 2s ;
+            }
+            @keyframes fadeIn {
+                0%{
+                    opacity:0 ;
+                }
+                100%{
+                    opacity: 1;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <a href = "http://127.0.0.1:5000"><image src="https://cdn.discordapp.com/attachments/959644048841375787/1127480445110591498/bot.png" alt="logo" class = "logo"></a>
+        </div>
+        <div class = "fadein order">
+            <h1  class="noidungdongdau">The virtual assisstance </span></h1>
+            <h1  class="noidungdonghai">of the twenty-first century </span></h1>
+            <p class="noidungphumot"> the digital ambassadors bridging the gap between humans and machines</p>
+            <p class="noidungphuhai">that revolutionize the way we interact and find information in the digital realm.</p>
+        </div>
+        <div class="container fadein">
+            <div class="chat_box_frame">
+            <div class="chat_box">
+                <div class="chat_body">
+                    {% if request.form.get('button_action') == 'activated' %}
+                        {%for message in dialog%}
+                        <div class="chat_message">
+                            <span class="sender">User :</span>
+                            <span class="usermessage">{{message[0]}}</span>
+                        </div>
+                        <div class="chat_message">
+                            <span class="sender">Chatbot :</span>
+                            <span class="botmessage">{{message[1]}}</span>
+                        </div>
+                        {% endfor %}
+                    {% endif%}
+                </div>
+                <form action ='/chatbot' method="POST" >
+                    <div class="chat_input">
+                        <input type="text" name="question" placeholder="Nhập câu hỏi vào đây" required/>
+                        <button type="submit" name="button_action" value="activated" >Gửi</button>
+                        <button type="button" name="button_voice" value="recorded" >Giọng nói</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </body>
+</html>
