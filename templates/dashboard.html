@@ -1,105 +1,242 @@
+<!DOCTYPE HTML>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> AI Project</title>
+        <link rel="icon" 
+        type="image/png" 
+        href="https://cdn.discordapp.com/attachments/959644048841375787/1128258611605413959/Modern_Square_Typographic_Fashion_Brand_Logo.png">
         <style>
-            body { font-family: Arial, sans-serif; margin: 20px; }
-            h2 { color: #333; }
-            table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-            th, td { border: 1px solid #ddd; padding: 8px; }
-            th { background-color: #f2f2f2; text-align: left; }
-            .section { margin-bottom: 40px; }
+            header{
+                position:relative;
+                background-image : url('https://cdn.discordapp.com/attachments/959644048841375787/1127465435684667453/Thiet_ke_chua_co_ten_1.png');
+                background-repeat: no-repeat;
+                height : 100vh;
+                background-position : center;
+                background-size:cover;
+            
+                
+            }
+         
+            *{
+                font-family :'Roboto Slab';
+                margin : 0;
+                padding: 0;
+                font-size:22px;
+            }
+            .pseudo{
+                position:absolute;
+                height:100%;
+                width:100%;
+                background: rgba(0,0,0,0.4);
+                left :0;
+                right:0;
+                top :0;
+                bottom :0;
+            }
+            nav{
+                position: absolute;
+                width: 100%;
+                padding:20px 0px;
+                z-index: 1;
+            }
+            .main{   
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding : 0px 30px;
+                box-sizing: border-box;
+
+            }
+            .logo{
+                width :190px;
+            }
+            .categories{
+                padding : 28px 0px;
+
+            }
+            .categories li{
+                display: inline-block;
+                margin: 0px 20px;
+            }
+            .categories li a{
+                text-decoration: none;
+                font-family : "Roboto Slap";
+                color : white;
+                position: relative;
+                font-size: 25px;
+                font-weight: 700;
+            }
+            .categories li a::after{
+                content: "";
+                margin: -3px ;
+                height: 2px;
+                width: 0;
+                background: #1AEA5C;
+                position: absolute;
+                left:0;
+                right:0;
+                bottom:0;
+                transition: width 0.5s;
+            }
+            .categories li a:hover::after{
+                width: 106%;
+            }
+            .noidung{
+                color: white;
+                position: absolute;
+                top:40%;
+                left: 40%;
+                font-size: 50px;
+            }
+            .noidungphu{
+                color: white;
+                position:absolute;
+                top:48%;
+                left:40%;
+                font-size: 35px;
+            }
+            main{
+                position: relative;
+                height: 100vh;
+                background: url("https://cdn.discordapp.com/attachments/959644048841375787/1127557898965364887/Thiet_ke_chua_co_ten_3.png");
+                background-position: center;
+
+            }
+
+            .fadein{
+                animation: fadeIn 2s ;
+            }
+            @keyframes fadeIn {
+                0%{
+                  opacity:0 ;
+                }
+                100%{
+                  opacity: 1;
+                }
+            }
+            .head{
+                position:absolute;
+                top: 20%;
+                left: 40%;
+                font-size:40px;
+                color:white;
+            }
+            .detail{
+                justify-content: space-between;
+                flex-direction: column;
+            } 
+            .container {
+                display:flex;
+            
+            
+
+            }
+
+            .column {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .category {
+                margin-bottom: -100px;
+                margin-top:350px;
+            }
+
+
+            h3 {
+                margin: 0 0 10px;
+                color: white;
+                font-size: 35px ;
+                color:#1AEA5C;
+            }
+
+            .category-list {
+                padding: 0;
+                margin: 0;
+            }
+
+            .category-list li {
+                margin-bottom: 5px;
+                color: white;
+                font-size: 25px ;
+        
+            }
+            #change{
+                margin-bottom:-22px;
+            }
+            .green{
+                color : #1AEA5C;
+                font-size: 50px;
+            }
+       
         </style>
+        
     </head>
     <body>
-        <h1>3-Day Trip Itinerary</h1>
-        <div class="section">
-            <h2>Flights</h2>
-            <table>
-                <tr><th>Type</th><th>Name</th><th>Departure</th><th>Destination</th><th>Time</th><th>Price ($)</th></tr>
-                <tr><td>Departure</td><td>Southwest Flight SW3901</td><td>Sacramento, CA</td><td>Atlanta, GA</td><td>12:00 - 20:20</td><td>660</td></tr>
-                <tr><td>Return</td><td>Southwest Flight SW3901</td><td>Atlanta, GA</td><td>Sacramento, CA</td><td>12:00 - 20:20</td><td>660</td></tr>
-            </table>
-        </div>
-        <div class="section">
-            <h2>Hotel</h2>
-            <table>
-                <tr><th>Name</th><th>Price per Night ($)</th><th>Check-in</th><th>Check-out</th><th>Nights</th><th>Description</th></tr>
-                <tr><td>Party Plaza Hotel</td><td>220</td><td>March 14</td><td>March 16</td><td>2</td><td>Downtown hotel that allows in-room gatherings and has a rooftop lounge.</td></tr>
-            </table>
-        </div>
-    
-        <div class="section">
-            <h2>Activities for March 14</h2>
-            <h3>Meals</h3>
-            <table>
-                <tr><th>Name</th><th>Cost ($)</th><th>Time</th><th>Location</th><th>Description</th></tr>
-        
-                <tr><td>Breakfast at The Vortex Bar & Grill</td><td>60</td><td>09:00 - 10:00</td><td>Atlanta, GA</td><td>Known for its burgers and vibrant atmosphere; great for groups.</td></tr>
-            
-                <tr><td>Lunch at Old Lady Gang Southern Cuisine</td><td>50</td><td>13:00 - 14:00</td><td>Atlanta, GA</td><td>Soul food restaurant with a lively environment.</td></tr>
-            
-                <tr><td>Dinner at Sweet Georgia's Juke Joint</td><td>80</td><td>19:00 - 20:30</td><td>Atlanta, GA</td><td>Southern cuisine with live music and dance floor.</td></tr>
-            
-            </table>
-            <h3>Attractions</h3>
-            <table>
-                <tr><th>Name</th><th>Cost ($)</th><th>Time</th><th>Location</th><th>Duration</th><th>Description</th></tr>
-        
-                <tr><td>Atlanta Nightlife Tour</td><td>110</td><td>21:00 - 01:00</td><td>Atlanta, GA</td><td>04:00</td><td>Experience the best clubs and bars with a guided nightlife tour.</td></tr>
-            
-            </table>
-        </div>
-        
-        <div class="section">
-            <h2>Activities for March 15</h2>
-            <h3>Meals</h3>
-            <table>
-                <tr><th>Name</th><th>Cost ($)</th><th>Time</th><th>Location</th><th>Description</th></tr>
-        
-                <tr><td>Breakfast at The Optimist</td><td>100</td><td>09:00 - 10:00</td><td>Atlanta, GA</td><td>Seafood restaurant with a trendy vibe and outdoor seating.</td></tr>
-            
-                <tr><td>Lunch at STK Atlanta</td><td>140</td><td>12:30 - 14:00</td><td>Atlanta, GA</td><td>Chic steakhouse with a DJ and lounge area.</td></tr>
-            
-                <tr><td>Dinner at The Vortex Bar & Grill</td><td>60</td><td>18:30 - 20:00</td><td>Atlanta, GA</td><td>Known for its burgers and vibrant atmosphere; great for groups.</td></tr>
-            
-            </table>
-            <h3>Attractions</h3>
-            <table>
-                <tr><th>Name</th><th>Cost ($)</th><th>Time</th><th>Location</th><th>Duration</th><th>Description</th></tr>
-        
-                <tr><td>Georgia Aquarium</td><td>70</td><td>10:30 - 13:30</td><td>Atlanta, GA</td><td>03:00</td><td>Explore marine life at one of the world's largest aquariums.</td></tr>
-            
-                <tr><td>Atlanta Botanical Garden</td><td>50</td><td>14:30 - 17:00</td><td>Atlanta, GA</td><td>02:30</td><td>Beautiful gardens and conservatories; perfect for a daytime stroll.</td></tr>
-            
-            </table>
-        </div>
-        
-        <div class="section">
-            <h2>Activities for March 16</h2>
-            <h3>Meals</h3>
-            <table>
-                <tr><th>Name</th><th>Cost ($)</th><th>Time</th><th>Location</th><th>Description</th></tr>
-        
-                <tr><td>Breakfast at Sweet Georgia's Juke Joint</td><td>80</td><td>09:00 - 10:00</td><td>Atlanta, GA</td><td>Southern cuisine with live music and dance floor.</td></tr>
-            
-                <tr><td>Lunch at Old Lady Gang Southern Cuisine</td><td>50</td><td>12:00 - 13:00</td><td>Atlanta, GA</td><td>Soul food restaurant with a lively environment.</td></tr>
-            
-                <tr><td>Dinner at STK Atlanta</td><td>140</td><td>17:00 - 18:30</td><td>Atlanta, GA</td><td>Chic steakhouse with a DJ and lounge area.</td></tr>
-            
-            </table>
-            <h3>Attractions</h3>
-            <table>
-                <tr><th>Name</th><th>Cost ($)</th><th>Time</th><th>Location</th><th>Duration</th><th>Description</th></tr>
-        
-                <tr><td>Piedmont Park Picnic</td><td>0</td><td>10:30 - 12:30</td><td>Atlanta, GA</td><td>02:00</td><td>Enjoy a relaxing picnic in the city's iconic park.</td></tr>
-            
-                <tr><td>World of Coca-Cola</td><td>36</td><td>14:00 - 16:00</td><td>Atlanta, GA</td><td>02:00</td><td>Interactive exhibits and tasting sessions of Coca-Cola products.</td></tr>
-            
-            </table>
-        </div>
-        
-        <div class="section">
-            <h2>Total Cost</h2>
-            <p>$3441</p>
-        </div>
+        <header>
+            <div class = "pseudo"></div>
+            <nav>
+                <div class = "main fadein">
+                    <a href = "http://127.0.0.1:5000"><image src="https://cdn.discordapp.com/attachments/959644048841375787/1127480445110591498/bot.png" alt="logo" class = "logo"></a>
+                    <ul class = "categories">
+                        <li><a href="http://127.0.0.1:5000">Dashboard</a></li>
+                        <li><a href="http://127.0.0.1:5000/chatbot">Chatbot AI</a></li>                    
+                        <li><a href="http://127.0.0.1:5000/vision">Computer Vision</a></li>
+                        <li><a href="">Weather Forecast</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class = "fadein">
+               <h1  class="noidung"> AI Application <span class = "green"> Project</span></h1>
+               <p class="noidungphu">developed by Nguyen Ha Tu Linh</p>
+            </div>
+        </header>  
+        <main>
+            <div class = "fadein">
+                <h1 class="head">Thông tin về Project</h1>
+                <div class="container">
+                    <div class="column">
+                      <div class="category" id="change">
+                        <h3>Người thực hiện</h3>
+                        <ul class="category-list">
+                          <li>Nguyễn Hà Tự Linh</li>
+                        </ul>
+                      </div>
+                      <div class="category">
+                        <h3>Thời gian thực hiện</h3>
+                        <ul class="category-list">
+                          <li>Ngày bắt đầu : 06 / 07 </li>
+                          <li>Ngày hoàn thành : 12 / 07 </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div class="category">
+                        <h3>Thông tin về AI</h3>
+                        <ul class="category-list">
+                          <li>Chat bot tương tác và tự động trả lời câu hỏi </li>
+                          <li>AI vision có thể nhận dạng bàn tay</li>
+                          <li>AI vision có thể dịch mã Morse</li>
+                        </ul>
+                      </div>
+                      <div class="category">
+                        <h3>Ngôn ngữ sử dụng</h3>
+                        <ul class="category-list">
+                          <li>Lập trình function bằng Python và Flask</li>
+                          <li>Lập trình giao diện bằng HTML và CSS</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </main>
+        <footer>
+
+        </footer>
     </body>
-    </html>
+</html>
+
