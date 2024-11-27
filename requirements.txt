@@ -1,0 +1,9 @@
+flask
+torch==2.13.0
+torchtext==0.18.0
+pandas
+nltk
+re
+matplotlib
+scikit-learn
+time

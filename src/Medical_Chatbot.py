@@ -1,7 +1,3 @@
-# %%
-!pip install nltk
-
-# %%
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -16,18 +12,14 @@ import re
 import torchtext.vocab as tvc
 from nltk.corpus import stopwords
 
-# %%
+
 nltk.download('wordnet')
 nltk.download('stopwords')
 
-# %%
+
 #Import Dataset
-
 df = pd.read_csv('Dataset/train_medical_chatbot.csv', engine='python', on_bad_lines='skip')
-df
 
-
-# %%
 #Preprocess dataset
 wordnet = WordNetLemmatizer()
 stop_words = stopwords.words('english')
@@ -55,7 +47,7 @@ df["Doctor"] = df["Doctor"].apply(add_eos)
 
 df
 
-# %%
+
 #Build/load vocabulary
 unk_token = "<unk>"
 pad_token = "<pad>"
@@ -66,19 +58,19 @@ whole_text = df["Description"].tolist() + df["Patient"].tolist() + df["Doctor"].
 text_vocabulary = torch.load('Load_Vocabulary/text_vocabulary.pt')
 text_vocabulary.set_default_index(text_vocabulary[unk_token])
 
-# %%
+#Save vocabulary
 torch.save(text_vocabulary, 'Load_Vocabulary/text_vocabulary.pt')
 
-# %%
+
 #Combine description and patient prompt
 df["Patient"] = df["Description"] + df["Patient"]
 
-# %%
+
 #Numberize the tokens
 def token_to_index(tokens):
   return text_vocabulary.lookup_indices(tokens)
 
-# %%
+
 #Numberizing and padding the dataset
 
 df["Patient"] = df["Patient"].apply(token_to_index)
@@ -86,12 +78,12 @@ df["Doctor"] = df["Doctor"].apply(token_to_index)
 input = [torch.tensor(x) for x in df["Patient"]]
 output = [torch.tensor(y) for y in df["Doctor"]]
 
-# %%
+
 #Setup the training input and output
 input = input[7300:]
 output = output[7300:]
 
-# %%
+
 #Build the model
 class pos_encoder(nn.Module):
   def __init__(self, embedding_size, max_len):
@@ -164,20 +156,18 @@ class Transformer(nn.Module):
 
 
 
-# %%
+
 model = Transformer(len(text_vocabulary), 100)
 loss = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr = 0.001)
 
-# %%
+
 check_point = torch.load('Model_Checkpoint/check-point-after-adjusted-optimizer-and-restart-model.pt')
 model.load_state_dict(check_point['model_state_dict'])
 optimizer.load_state_dict(check_point['optimizer_state_dict'])
 
-# %%
+
 #Train the model
-
-
 def train():
     num_epoch = 1
     for epoch in range(num_epoch):
@@ -229,7 +219,7 @@ train()
     
     
 
-# %%
+
 input_test = "What is pregnancy"
 input_test = get_rid_of_q(input_test)
 input_test = clean_text(input_test)
