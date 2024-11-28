@@ -7,3 +7,5 @@ re
 matplotlib
 scikit-learn
 time
+wordcloud
+seaborn
